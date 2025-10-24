@@ -21,4 +21,8 @@ export default {
     question: "Test?",
     options: ["test1", "test2", "test3", "test4"],
   },
+  6: {
+    question: "Test?",
+    options: ["test1", "test2", "test3", "test4"],
+  },
 } as Record<string, Question>;
