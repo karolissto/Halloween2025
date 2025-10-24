@@ -6,7 +6,6 @@
 
     <button type="submit" @click="onSubmit">Pateikti</button>
   </fieldset>
-  <div v-else>Labas {{ user }}!</div>
 </template>
 <script setup lang="ts">
 import { useGlobalStore } from "@/stores/global";
@@ -22,7 +21,7 @@ const router = useRouter();
 function onSubmit() {
   globalStore.setUser(name.value);
   if (globalStore.questionId) {
-    router.push({ name: "home", params: { id: globalStore.questionId } });
+    router.push({ name: "questions", params: { id: globalStore.questionId } });
   }
 }
 </script>

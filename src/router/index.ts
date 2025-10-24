@@ -1,6 +1,7 @@
 import { NameStorageKey } from "@/constants/common";
 import { useGlobalStore } from "@/stores/global";
 import LoginView from "@/views/LoginView.vue";
+import NotFoundView from "@/views/NotFoundView.vue";
 import QuestionsView from "@/views/QuestionsView.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -8,19 +9,24 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      redirect: { name: "login" },
+      path: "/login",
+      name: "login",
+      component: LoginView,
     },
     {
-      path: "/:id",
-      name: "home",
+      path: "/404",
+      name: "404",
+      component: NotFoundView,
+    },
+    {
+      path: "/klausimelis/:id",
+      name: "questions",
       component: QuestionsView,
       props: true,
     },
     {
-      path: "/login",
-      name: "login",
-      component: LoginView,
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
     },
   ],
 });
